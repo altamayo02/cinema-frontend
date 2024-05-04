@@ -1,0 +1,32 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0">Icons</h3>
+        </div>
+        <div class="card-body">
+          <thead>
+            <tr>
+                <th></th>
+            </tr>
+          </thead>
+          <tr *ngFor="let currentTheater of theaters">
+            <td>{{currentTheater.id}}</td>
+            <td>{{currentTheater.location}}</td>
+            <td>{{currentTheater.capacity}}</td>
+            <td>
+              <button class="btn btn-primary" (click)="view(currentTheater.id)"></button>
+              <button class="btn btn-warning" (click)="view(currentTheater.id)"></button>
+              <button class="btn btn-danger" (click)="view(currentTheater.id)"></button>
+            </td>
+          </tr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0" *ngIf="mode==1">Crear teatro</h3>
+          <h3 class="mb-0" *ngIf="mode==2">Ver teatro</h3>
+          <h3 class="mb-0" *ngIf="mode==3">Actualizar teatro</h3>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        Id:
+                    </div>
+                    <div class="col-8">
+                        {{theater.id}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        Ubicación:
+                    </div>
+                    <div class="col-8">
+                        {{theater.location}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        Capacidad:
+                    </div>
+                    <div class="col-8">
+                        {{theater.capacity}}
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
