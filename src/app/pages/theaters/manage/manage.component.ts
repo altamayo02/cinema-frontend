@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TheaterModel } from 'src/app/models/theater/theater.model';
 import { TheatersService } from 'src/app/services/theaters.service';
 
@@ -18,8 +18,10 @@ export class ManageComponent implements OnInit {
   mode: number
   theater: TheaterModel
   formGroup: FormGroup
+  submitAttempted: boolean
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private service: TheatersService,
@@ -30,6 +32,7 @@ export class ManageComponent implements OnInit {
       location: "",
       capacity: 0
     }
+    this.submitAttempted = false
     this.buildFormGroup()
   }
 
@@ -73,8 +76,32 @@ export class ManageComponent implements OnInit {
         Validators.max(100),
       ]],
       location: ['', [
+        Validators.required,
         Validators.minLength(2),
       ]]
     })
   }
+
+  create() {
+    if (this.formGroup.invalid) {
+      this.submitAttempted = true
+      Swal.fire("Error en el formulario", "Ingrese correctamente los datos solicitados", "error")
+    }
+    this.service.create(this.theater).subscribe(data => {
+      Swal.fire("Creación exitosa", "Se ha creado la entrada correctamente")
+      this.router.navigate(["theaters/list"])
+    })
+  }
+  
+  update() {
+    if (this.formGroup.invalid) {
+      this.submitAttempted = true
+      Swal.fire("Error en el formulario", "Ingrese correctamente los datos solicitados", "error")
+    }
+    this.service.create(this.theater).subscribe(data => {
+      Swal.fire("Creación exitosa", "", "error")
+      this.router.navigate(["theaters/list"])
+    })
+  }
+
 }
