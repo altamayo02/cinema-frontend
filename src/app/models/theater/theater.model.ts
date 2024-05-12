@@ -11,6 +11,4 @@ export class TheaterModel {
   location: string;
   capacity: number;
   seats?: SeatModel[];
-
-  constructor() { }
 }

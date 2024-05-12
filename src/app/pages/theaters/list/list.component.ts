@@ -4,41 +4,45 @@ import { TheaterModel } from 'src/app/models/theater/theater.model';
 import { TheatersService } from 'src/app/services/theaters.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+	selector: 'app-list',
+	templateUrl: './list.component.html',
+	styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  theaters: TheaterModel[]
-  constructor(
-    private service: TheatersService,
-    private router: Router,
-    theaters: Array<TheaterModel>
-  ) {
-    this.theaters = theaters
-  }
+	theaters: TheaterModel[]
 
-  ngOnInit(): void {
-  }
+	constructor(
+		private service: TheatersService,
+		private router: Router,
+	) {
+		this.theaters = []
+	}
 
-  
-  create() {
+	ngOnInit(): void {
+		this.list()
+	}
 
-  }
+	
+	create() {
 
-  list() {
-    this.service.list().subscribe()
-  }
+	}
 
-  view(id: number) {
-    this.router.navigate(['theaters/view/', id])
-  }
+	list() {
+		this.service.list().subscribe(theaters => {
+			this.theaters = theaters
+			console.log(JSON.stringify(theaters))
+		})
+	}
 
-  update(id: number) {
+	view(id: number) {
+		this.router.navigate(['theaters/view/', id])
+	}
 
-  }
+	update(id: number) {
 
-  delete(id: number) {
+	}
 
-  }
+	delete(id: number) {
+
+	}
 }

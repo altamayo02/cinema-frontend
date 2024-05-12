@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TheaterModel } from 'src/app/models/theater/theater.model';
 import { TheatersService } from 'src/app/services/theaters.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manage',
@@ -27,11 +28,7 @@ export class ManageComponent implements OnInit {
     private service: TheatersService,
   ) {
     this.mode = 0
-    this.theater = {
-      id: 0,
-      location: "",
-      capacity: 0
-    }
+    this.theater = new TheaterModel()
     this.submitAttempted = false
     this.buildFormGroup()
   }
