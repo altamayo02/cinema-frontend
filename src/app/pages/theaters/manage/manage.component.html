@@ -11,32 +11,44 @@
           <h3 class="mb-0" *ngIf="mode==3">Actualizar teatro</h3>
         </div>
         <div class="card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-4">
-                        Id:
+            <form class="form" [formGroup]="formGroup">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            Id:
+                        </div>
+                        <div class="col-8">
+                            {{theater.id}}
+                        </div>
                     </div>
-                    <div class="col-8">
-                        {{theater.id}}
+                    <div class="row">
+                        <div class="col-4">
+                            Ubicación:
+                        </div>
+                        <div class="col-8">
+                            {{theater.location}}
+                            <input type="text" class="form-control" [(ngModel)]="theater.location" [disabled]="mode==1" formControlName="location">
+                            <div *ngIf="getFormGroup.location.errors && (getFormGroup.location.dirty || getFormGroup.location.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.location.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Capacidad:
+                        </div>
+                        <div class="col-8">
+                            {{theater.capacity}}
+                            <input type="text" class="form-control" [(ngModel)]="theater.capacity" [disabled]="mode==1" formControlName="capacity">
+                            <div *ngIf="getFormGroup.capacity.errors && (getFormGroup.capacity.dirty || getFormGroup.capacity.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.capacity.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.capacity.errors.max" class="msnError">Mínimo 100</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        Ubicación:
-                    </div>
-                    <div class="col-8">
-                        {{theater.location}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        Capacidad:
-                    </div>
-                    <div class="col-8">
-                        {{theater.capacity}}
-                    </div>
-                </div>
-            </div>
         </div>
       </div>
     </div>
