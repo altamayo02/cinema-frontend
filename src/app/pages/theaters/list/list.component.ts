@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   constructor(
     private service: TheatersService,
     private router: Router,
-    theaters: TheaterModel[]
+    theaters: Array<TheaterModel>
   ) {
     this.theaters = theaters
   }

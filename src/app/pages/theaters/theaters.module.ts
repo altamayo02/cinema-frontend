@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { ManageComponent } from './manage/manage.component';
-
+import { TheatersRoutingModule } from './theaters-routing.module';
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { ManageComponent } from './manage/manage.component';
     ManageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+	TheatersRoutingModule
   ]
 })
 export class TheatersModule { }
