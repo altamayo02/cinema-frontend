@@ -14,7 +14,7 @@ export class TheatersService {
   ) { }
 
   list(): Observable<TheaterModel[]> {
-    return this.http.get<TheaterModel[]>(`${environment.url_ms_cinema}/theaters/`)
+    return this.http.get<TheaterModel[]>(`${environment.url_ms_cinema}/theaters`)
   }
 
   view(id: number): Observable<TheaterModel> {
