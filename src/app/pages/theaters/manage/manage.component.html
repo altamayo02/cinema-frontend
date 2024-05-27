@@ -48,6 +48,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Proyector:
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" formControlName="projectorId" [(ngModel)]="theater.projector.id">
+                                <option *ngFor="let projector of projectors" [value]="option.id">
+                                    Marca: {{projector.brand}},
+                                    Resolución: {{projector.width}}x{{projector.height}}
+                                </option>                                
+                            </select>
+                        </div>
+                    </div>
                 </div>
 			</form>
         </div>

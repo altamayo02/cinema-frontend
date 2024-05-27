@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Projector } from 'src/app/models/projector.model';
 import { TheaterModel } from 'src/app/models/theater/theater.model';
+import { ProjectorsService } from 'src/app/services/projectors.service';
 import { TheatersService } from 'src/app/services/theaters.service';
 import Swal from 'sweetalert2';
 
@@ -20,16 +22,19 @@ export class ManageComponent implements OnInit {
   theater: TheaterModel
   formGroup: FormGroup
   submitAttempted: boolean
+  projectors: Projector[]
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private service: TheatersService,
+    private projectorsService: ProjectorsService
   ) {
     this.mode = 0
     this.theater = new TheaterModel()
     this.submitAttempted = false
+    this.projectors = []
     this.buildFormGroup()
   }
 
@@ -47,6 +52,8 @@ export class ManageComponent implements OnInit {
       this.theater.id = this.activatedRoute.snapshot.params.id
       this.getTheater(this.theater.id)
     }
+    
+    this.getProjectors()
   }
 
   getTheater(id: number) {
@@ -59,6 +66,12 @@ export class ManageComponent implements OnInit {
   getTheaterData() {
     this.theater.capacity = this.getFormGroup.capacity.value
     this.theater.location = this.getFormGroup.location.value
+  }
+
+  getProjectors() {
+    this.projectorsService.list().subscribe(data => {
+      this.projectors = data
+    })
   }
   
   get getFormGroup() {
@@ -75,6 +88,9 @@ export class ManageComponent implements OnInit {
       location: ['', [
         Validators.required,
         Validators.minLength(2),
+      ]],
+      projectorId: [null, [
+        Validators.required
       ]]
     })
   }

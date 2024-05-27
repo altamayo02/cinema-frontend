@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeatModel } from '../seat/seat.model';
+import { Projector } from '../projector.model';
 
 @Component({
   selector: 'app-theater',
@@ -11,4 +12,5 @@ export class TheaterModel {
   location: string;
   capacity: number;
   seats?: SeatModel[];
+  projector: Projector
 }
