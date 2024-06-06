@@ -12,8 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { TheaterModel } from './models/theater/theater.model';
-import { SeatModel } from './models/seat/seat.model';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
@@ -32,8 +30,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    TheaterModel,
-    SeatModel
   ],
   providers: [
     AuthGuard,

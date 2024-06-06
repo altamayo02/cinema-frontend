@@ -14,9 +14,9 @@ import { TheatersRoutingModule } from './theaters-routing.module';
   ],
   imports: [
     CommonModule,
-    TheatersRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TheatersRoutingModule
   ]
 })
 export class TheatersModule { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TheaterModel } from '../models/theater/theater.model';
+import { Theater } from '../models/theater.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,23 +13,23 @@ export class TheatersService {
     private http: HttpClient
   ) { }
 
-  list(): Observable<TheaterModel[]> {
-    return this.http.get<TheaterModel[]>(`${environment.url_ms_cinema}/theaters`)
+  list(): Observable<Theater[]> {
+    return this.http.get<Theater[]>(`${environment.url_ms_cinema}/theaters`)
   }
 
-  view(id: number): Observable<TheaterModel> {
-    return this.http.get<TheaterModel>(`${environment.url_ms_cinema}/theaters/${id}`)
+  view(id: number): Observable<Theater> {
+    return this.http.get<Theater>(`${environment.url_ms_cinema}/theaters/${id}`)
   }
 
-  create(theater: TheaterModel): Observable<TheaterModel> {
-    return this.http.post<TheaterModel>(`${environment.url_ms_cinema}/theaters/`, theater)
+  create(theater: Theater): Observable<Theater> {
+    return this.http.post<Theater>(`${environment.url_ms_cinema}/theaters/`, theater)
   }
 
-  update(theater: TheaterModel): Observable<TheaterModel> {
-    return this.http.put<TheaterModel>(`${environment.url_ms_cinema}/theaters/${theater.id}`, theater)
+  update(theater: Theater): Observable<Theater> {
+    return this.http.put<Theater>(`${environment.url_ms_cinema}/theaters/${theater.id}`, theater)
   }
   
   delete(id: number) {
-    return this.http.delete<TheaterModel>(`${environment.url_ms_cinema}/theaters/${id}`)
+    return this.http.delete<Theater>(`${environment.url_ms_cinema}/theaters/${id}`)
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TheaterModel } from 'src/app/models/theater/theater.model';
+import { Theater } from 'src/app/models/theater.model';
 import { TheatersService } from 'src/app/services/theaters.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { TheatersService } from 'src/app/services/theaters.service';
 	styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-	theaters: TheaterModel[]
+	theaters: Theater[]
 
 	constructor(
 		private service: TheatersService,
